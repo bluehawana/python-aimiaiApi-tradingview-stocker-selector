@@ -1,0 +1,174 @@
+# Multi-Sector Stock Analyzer Configuration
+# Covers: Chips, Solid State Batteries, Energy Storage, Solar, Smart Grids, Robots, CPO, New Energy
+
+stocks:
+  market: "CN"
+  
+  # Expanded sector coverage
+  sectors:
+    # Semiconductor & Chips (芯片半导体)
+    chips:
+      - "688981"  # 中芯国际 SMIC
+      - "002371"  # 北方华创 NAURA
+      - "603501"  # 韦尔股份 Will Semiconductor
+      - "688008"  # 澜起科技 Montage Technology
+      - "688396"  # 华润微 CR Micro
+    
+    # Memory & Storage (存储芯片)
+    memory:
+      - "002049"  # 紫光国微 Unigroup Guoxin
+      - "603986"  # 兆易创新 GigaDevice
+      - "688256"  # 寒武纪 Cambricon
+    
+    # CPO (Co-Packaged Optics 共封装光学)
+    cpo:
+      - "300502"  # 新易盛 Eoptolink
+      - "300308"  # 中际旭创 Innolight
+      - "002281"  # 光迅科技 Accelink
+    
+    # Solid State Batteries (固态电池)
+    solid_state_battery:
+      - "002074"  # 国轩高科 Gotion High-tech
+      - "300750"  # 宁德时代 CATL
+      - "688005"  # 容百科技 Ronbay Technology
+      - "002460"  # 赣锋锂业 Ganfeng Lithium
+    
+    # Lithium Hexafluorophosphate (六氟磷酸锂)
+    lithium_hexafluorophosphate:
+      - "002460"  # 赣锋锂业 Ganfeng Lithium
+      - "002466"  # 天齐锂业 Tianqi Lithium
+      - "300014"  # 亿纬锂能 EVE Energy
+      - "002812"  # 恩捷股份 Enjie
+    
+    # Energy Storage (储能)
+    energy_storage:
+      - "300750"  # 宁德时代 CATL
+      - "002074"  # 国轩高科 Gotion High-tech
+      - "300014"  # 亿纬锂能 EVE Energy
+      - "688390"  # 固德威 Goodwe
+      - "300763"  # 锦浪科技 Ginlong
+    
+    # Solar Energy (光伏)
+    solar:
+      - "601012"  # 隆基绿能 LONGi Green Energy
+      - "688599"  # 天合光能 Trina Solar
+      - "002459"  # 晶澳科技 JA Solar
+      - "300274"  # 阳光电源 Sungrow
+      - "601865"  # 福莱特 Flat Glass
+    
+    # Smart Grid (智能电网)
+    smart_grid:
+      - "300316"  # 晶盛机电 Jingsheng Mechanical
+      - "002074"  # 国轩高科 Gotion High-tech
+      - "300763"  # 锦浪科技 Ginlong
+      - "300450"  # 先导智能 Lead Intelligent
+    
+    # Robotics & AI (机器人与人工智能)
+    robotics:
+      - "300024"  # 机器人 Siasun Robot
+      - "300450"  # 先导智能 Lead Intelligent
+      - "688169"  # 石头科技 Roborock
+      - "002747"  # 埃斯顿 Estun Automation
+      - "300124"  # 汇川技术 Inovance
+    
+    # New Energy Vehicles (新能源汽车)
+    new_energy_vehicles:
+      - "002594"  # 比亚迪 BYD
+      - "300750"  # 宁德时代 CATL
+      - "002920"  # 德赛西威 Desay SV
+      - "002129"  # 中环股份 TCL Zhonghuan
+  
+  # Data source
+  china_data_source: "akshare"
+
+technical_analysis:
+  rsi_period: 14
+  
+  sma_periods:
+    - 20
+    - 50
+    - 200
+  
+  ema_periods:
+    - 12
+    - 26
+  
+  macd_params:
+    fast: 12
+    slow: 26
+    signal: 9
+  
+  # MCDX parameters - Shannon pattern detection
+  mcdx_params:
+    length: "Auto"
+    revision: "12"
+    sma_pc_length: 10
+    sma_fc_length: 10
+    sma_lc_length: 10
+    
+    # Shannon pattern thresholds
+    profit_chips_threshold: 86.65  # Red line around 86.65
+    profit_chips_max: 100          # Red column reached 100
+  
+  # Volume surge detection (Shannon pattern: Sept 11-12)
+  volume_params:
+    normal_volume_threshold: 30000000   # 30M normal
+    surge_volume_threshold: 89000000    # 89M surge
+    volume_ratio_breakout: 2.0          # 2x normal = breakout
+    volume_ratio_surge: 3.0             # 3x normal = surge (like Shannon)
+    lookback_days: 30                   # Compare to 30-day average
+
+screening:
+  # Shannon-like pattern criteria
+  criteria:
+    # MCDX criteria
+    min_profit_chips: 80              # PC > 80%
+    max_locked_chips: 15              # LC < 15%
+    
+    # Volume criteria (critical for Shannon pattern)
+    min_volume_ratio: 2.5             # Volume > 2.5x average
+    min_volume_surge_days: 2          # Sustained for at least 2 days
+    
+    # Price action
+    min_price_change: 0.02            # +2% minimum
+    
+    # Trend
+    require_uptrend: true             # Must be in uptrend
+    
+  # Sector focus (empty = all sectors)
+  focus_sectors: []  # Leave empty to scan all sectors
+
+api:
+  token_url: "https://aimiai.com/api/token/get"
+  analysis_url: "https://aimiai.com/api/analysis"
+  
+  # Authentication method: POST with JSON body
+  auth_method: "POST"
+  auth_body:
+    appId: "${AppId}"      # Will be replaced from .env
+    appKey: "${AppKey}"    # Will be replaced from .env
+  
+  retry_attempts: 3
+  retry_delay: 2
+  rate_limit: 1
+
+visualization:
+  enabled: true
+  port: 5000
+  auto_refresh: 60
+  host: "127.0.0.1"
+  
+  # Dashboard features
+  show_volume_chart: true
+  show_mcdx_chart: true
+  highlight_surges: true
+
+output:
+  console: true
+  file: "results/multi_sector_analysis.json"
+  log_level: "INFO"
+  log_dir: "logs"
+  
+  # Export options
+  export_csv: true
+  export_excel: true

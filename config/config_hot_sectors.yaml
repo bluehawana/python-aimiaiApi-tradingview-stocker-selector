@@ -1,0 +1,217 @@
+# Hot Sectors Configuration - Multi-Sector Bull Stock Finder
+# Based on Shannon (300475) pattern: Volume surge + MCDX extremes
+
+stocks:
+  market: "CN"
+  
+  # Multi-sector approach - Not just chips!
+  sectors:
+    
+    # 1. Semiconductor & AI Chips
+    semiconductor:
+      - "300475"  # 圣邦股份 Shannon (Reference - 6x gain)
+      - "688256"  # 寒武纪 Cambricon AI
+      - "688008"  # 澜起科技 Memory Interface
+      - "603986"  # 兆易创新 Memory
+      - "688099"  # 晶晨股份 AI SoC
+      - "300782"  # 卓胜微 RF Chips
+    
+    # 2. Solid State Batteries (固态电池)
+    solid_state_battery:
+      - "002074"  # 国轩高科 Gotion High-Tech
+      - "300750"  # 宁德时代 CATL
+      - "002460"  # 赣锋锂业 Ganfeng Lithium
+      - "300014"  # 亿纬锂能 EVE Energy
+      - "688005"  # 容百科技 Rongbai Technology
+      - "688390"  # 固德威 GoodWe
+    
+    # 3. Lithium Hexafluorophosphate (六氟磷酸锂)
+    lithium_hexafluorophosphate:
+      - "002460"  # 赣锋锂业 Ganfeng
+      - "002466"  # 天齐锂业 Tianqi Lithium
+      - "002812"  # 恩捷股份 Enjie
+      - "300037"  # 新宙邦 Capchem
+      - "002709"  # 天赐材料 Tinci Materials
+    
+    # 4. Energy Storage (储能)
+    energy_storage:
+      - "300750"  # 宁德时代 CATL
+      - "002074"  # 国轩高科 Gotion
+      - "300014"  # 亿纬锂能 EVE
+      - "688390"  # 固德威 GoodWe
+      - "300763"  # 锦浪科技 Ginlong
+      - "688032"  # 禾迈股份 Hoymiles
+    
+    # 5. Solar Energy (光伏)
+    solar:
+      - "601012"  # 隆基绿能 LONGi
+      - "688223"  # 晶科能源 JinkoSolar
+      - "600438"  # 通威股份 Tongwei
+      - "002459"  # 晶澳科技 JA Solar
+      - "300274"  # 阳光电源 Sungrow
+      - "688390"  # 固德威 GoodWe
+    
+    # 6. Smart Grid (智能电网)
+    smart_grid:
+      - "600406"  # 国电南瑞 NARI Technology
+      - "002074"  # 国轩高科 Gotion
+      - "300274"  # 阳光电源 Sungrow
+      - "300316"  # 晶盛机电 Jingsheng
+      - "002498"  # 汉缆股份 Honcable
+    
+    # 7. Robotics & Automation (机器人)
+    robotics:
+      - "300024"  # 机器人 Siasun Robot
+      - "300450"  # 先导智能 Lead Intelligent
+      - "688169"  # 石头科技 Roborock
+      - "300124"  # 汇川技术 Inovance
+      - "002747"  # 埃斯顿 Estun Automation
+      - "688608"  # 恒玄科技 BES
+    
+    # 8. Electric Vehicles (新能源汽车)
+    ev:
+      - "002594"  # 比亚迪 BYD
+      - "300750"  # 宁德时代 CATL
+      - "002920"  # 德赛西威 Desay SV
+      - "002129"  # 中环股份 TCL Zhonghuan
+      - "688981"  # 中芯国际 SMIC
+  
+  china_data_source: "akshare"
+
+# Enhanced Pattern Detection
+pattern_detection:
+  # Shannon Pattern Criteria (Sept 11-12, 2025)
+  shannon_pattern:
+    # Volume criteria
+    volume_surge_threshold: 3.0  # 3x average (30M -> 89M)
+    volume_breakout_threshold: 2.0  # 2x average
+    sustained_days: 2  # At least 2 days of high volume
+    
+    # MCDX criteria
+    profit_chips_extreme: 100  # Red column reached 100%
+    profit_chips_high: 85  # Dark red line around 86.65%
+    locked_chips_low: 15  # Low locked chips during surge
+    
+    # Combined signal
+    require_volume_and_mcdx: true  # Both must be present
+  
+  # Golden Cross (still important)
+  golden_cross_priority: true
+  
+  # Accumulation pattern
+  accumulation_threshold:
+    max_profit_chips: 40
+    min_locked_chips: 20
+  
+  # Volume analysis
+  volume_analysis_enabled: true
+  volume_weight: 0.4  # 40% weight in scoring
+  mcdx_weight: 0.6  # 60% weight in scoring
+
+# Scoring System
+scoring:
+  # Volume signals
+  volume_surge_3x: 50  # Shannon-level surge
+  volume_breakout_2x: 30
+  volume_increasing: 20
+  
+  # MCDX signals
+  golden_cross: 50
+  profit_chips_extreme: 40  # PC > 85%
+  accumulation_pattern: 30
+  bottom_catch: 20
+  double_dragon: 20
+  
+  # Combined signals
+  volume_plus_mcdx_extreme: 30  # Bonus for both
+  
+  # Minimum score for alert
+  alert_threshold: 70
+
+# Multi-Sector Analysis
+sector_analysis:
+  # Analyze each sector separately
+  sector_rotation: true
+  
+  # Track sector momentum
+  track_sector_leaders: true
+  
+  # Compare sectors
+  cross_sector_comparison: true
+  
+  # Sector weights (based on current market trends)
+  sector_weights:
+    semiconductor: 1.2  # High priority
+    solid_state_battery: 1.3  # Very hot
+    lithium_hexafluorophosphate: 1.1
+    energy_storage: 1.2
+    solar: 1.0
+    smart_grid: 0.9
+    robotics: 1.1
+    ev: 1.0
+
+# Alert Configuration
+alerts:
+  # Volume alerts
+  volume_surge_alert: true  # Alert on 3x volume
+  volume_breakout_alert: true  # Alert on 2x volume
+  
+  # MCDX alerts
+  golden_cross_alert: true
+  profit_chips_extreme_alert: true  # Alert when PC > 85%
+  
+  # Combined alerts
+  shannon_pattern_alert: true  # Volume + MCDX extreme
+  
+  # Sector alerts
+  sector_leader_alert: true  # Alert on sector leaders
+
+# Analysis Settings
+analysis:
+  historical_days: 200
+  min_data_points: 50
+  update_frequency: 60  # minutes
+  
+  # Volume analysis
+  volume_lookback_days: 30
+  volume_surge_detection: true
+  
+  # MCDX extremes
+  detect_mcdx_extremes: true
+  extreme_threshold: 85  # PC > 85% is extreme
+
+# Output
+output:
+  console: true
+  file: "results/hot_sectors_analysis.json"
+  log_level: "INFO"
+  
+  # Detailed reports
+  generate_sector_reports: true
+  sector_report_path: "results/sectors/"
+  
+  # Volume analysis report
+  volume_report: true
+  volume_report_path: "results/volume_analysis.json"
+  
+  # Excel export
+  export_excel: true
+  excel_output: "results/hot_sectors_report.xlsx"
+
+# Visualization
+visualization:
+  enabled: true
+  port: 5000
+  
+  # Highlight patterns
+  highlight_volume_surge: true
+  highlight_mcdx_extreme: true
+  highlight_shannon_pattern: true
+  
+  # Sector view
+  sector_comparison_view: true
+  sector_rotation_chart: true
+  
+  # Volume charts
+  volume_chart_enabled: true
+  volume_overlay_mcdx: true  # Show volume with MCDX

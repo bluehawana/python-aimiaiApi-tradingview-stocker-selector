@@ -1,0 +1,283 @@
+# Tech-Focused Configuration - 专注科技板块
+# 目标：找到下一个Shannon (300475) - 6倍金股
+# 策略：只关注高科技成长股，节约API和算力
+
+stocks:
+  market: "CN"
+  
+  # 精选科技板块 - 高成长潜力
+  tech_sectors:
+    
+    # 1. CPO光模块 (中际旭创模式)
+    cpo_optical:
+      - "300308"  # 中际旭创 Zhongji Innolight - CPO龙头
+      - "688396"  # 华润微 CR Micro
+      - "688008"  # 澜起科技 Montage - 高速互连
+      - "300502"  # 新易盛 Eoptolink
+      - "300620"  # 光库科技 Lightcomm
+      - "688498"  # 源杰科技 Advanced Micro-Fabrication
+    
+    # 2. AI芯片 & 算力
+    ai_chips:
+      - "688256"  # 寒武纪 Cambricon - AI芯片
+      - "688099"  # 晶晨股份 Amlogic - AI SoC
+      - "688521"  # 芯原股份 VeriSilicon - IP授权
+      - "688608"  # 恒玄科技 BES - AI音频芯片
+      - "688981"  # 中芯国际 SMIC - 先进制程
+    
+    # 3. 半导体设备 & 材料
+    semiconductor:
+      - "300475"  # 圣邦股份 Shannon - 模拟芯片 (参考股)
+      - "002371"  # 北方华创 NAURA - 设备龙头
+      - "688012"  # 中微公司 AMEC - 刻蚀设备
+      - "688126"  # 沪硅产业 SIMGUI - 硅片
+      - "688396"  # 华润微 - 功率半导体
+      - "300782"  # 卓胜微 Maxscend - RF芯片
+    
+    # 4. 固态电池 (下一代技术)
+    solid_state_battery:
+      - "300750"  # 宁德时代 CATL - 固态电池研发
+      - "002074"  # 国轩高科 Gotion - 固态电池
+      - "300014"  # 亿纬锂能 EVE - 固态电池
+      - "688005"  # 容百科技 Rongbai - 正极材料
+      - "688390"  # 固德威 GoodWe - 储能系统
+    
+    # 5. 六氟磷酸锂 & 电池材料
+    battery_materials:
+      - "002460"  # 赣锋锂业 Ganfeng - 锂资源
+      - "002709"  # 天赐材料 Tinci - 六氟磷酸锂
+      - "300037"  # 新宙邦 Capchem - 电解液
+      - "002812"  # 恩捷股份 Enjie - 隔膜
+      - "300568"  # 星源材质 Senior - 隔膜
+    
+    # 6. 储能系统
+    energy_storage:
+      - "300274"  # 阳光电源 Sungrow - 储能逆变器
+      - "688390"  # 固德威 GoodWe - 储能系统
+      - "300763"  # 锦浪科技 Ginlong - 逆变器
+      - "688032"  # 禾迈股份 Hoymiles - 微逆变器
+      - "688567"  # 孚能科技 Farasis - 软包电池
+    
+    # 7. 光伏 (新技术方向)
+    solar_tech:
+      - "601012"  # 隆基绿能 LONGi - 光伏龙头
+      - "688223"  # 晶科能源 JinkoSolar
+      - "002459"  # 晶澳科技 JA Solar
+      - "300316"  # 晶盛机电 Jingsheng - 设备
+      - "688599"  # 天合光能 Trina Solar
+    
+    # 8. 机器人 & 自动化
+    robotics:
+      - "300024"  # 机器人 Siasun Robot
+      - "300450"  # 先导智能 Lead Intelligent
+      - "688169"  # 石头科技 Roborock
+      - "300124"  # 汇川技术 Inovance
+      - "002747"  # 埃斯顿 Estun
+      - "688618"  # 优必选 UBTECH (人形机器人)
+    
+    # 9. 智能驾驶 & 车载芯片
+    autonomous_driving:
+      - "002920"  # 德赛西威 Desay SV - 智能座舱
+      - "002049"  # 紫光国微 Unigroup Guoxin - 车规芯片
+      - "688099"  # 晶晨股份 - 车载芯片
+      - "300496"  # 中科创达 ThunderSoft - 智能驾驶
+      - "002230"  # 科大讯飞 iFlytek - AI语音
+  
+  china_data_source: "akshare"
+
+# Shannon模式检测 (9月11-12日模式)
+shannon_pattern:
+  # 成交量标准
+  volume:
+    surge_threshold: 3.0      # 成交量暴增3倍 (30M -> 89M)
+    breakout_threshold: 2.0   # 成交量突破2倍
+    sustained_days: 2         # 至少持续2天
+    baseline_days: 30         # 基准期30天
+  
+  # MCDX标准
+  mcdx:
+    profit_chips_extreme: 100  # 红柱达到100%
+    profit_chips_high: 85      # 深红线86.65%左右
+    sma_profit_high: 80        # SMA利润筹码>80%
+    locked_chips_low: 20       # 锁定筹码<20%
+  
+  # 组合信号 (必须同时满足)
+  combined:
+    require_volume_surge: true      # 必须有成交量暴增
+    require_mcdx_extreme: true      # 必须有MCDX极值
+    require_golden_cross: false     # 金叉可选 (有更好)
+    min_combined_score: 80          # 组合得分>80
+
+# 评分系统 (总分100)
+scoring:
+  # 成交量信号 (40分)
+  volume_surge_3x: 40           # 3倍成交量 (Shannon级别)
+  volume_breakout_2x: 25        # 2倍成交量
+  volume_increasing_trend: 15   # 成交量递增趋势
+  
+  # MCDX信号 (40分)
+  profit_chips_extreme: 40      # 利润筹码>85% (极值)
+  golden_cross: 30              # 金叉
+  double_dragon: 25             # 双龙
+  bottom_catch: 20              # 抄底
+  
+  # 组合信号 (20分)
+  volume_plus_mcdx: 20          # 成交量+MCDX极值同时出现
+  
+  # 告警阈值
+  alert_threshold: 70           # 得分>70触发告警
+  strong_signal_threshold: 85   # 得分>85强烈信号
+
+# 板块轮动分析
+sector_rotation:
+  enabled: true
+  
+  # 板块权重 (根据当前市场热度)
+  weights:
+    cpo_optical: 1.5          # CPO最热
+    ai_chips: 1.4             # AI芯片持续热
+    solid_state_battery: 1.3  # 固态电池新技术
+    battery_materials: 1.2    # 电池材料
+    energy_storage: 1.2       # 储能
+    semiconductor: 1.3        # 半导体
+    robotics: 1.1             # 机器人
+    autonomous_driving: 1.2   # 智能驾驶
+    solar_tech: 1.0           # 光伏
+  
+  # 板块领涨股识别
+  identify_sector_leaders: true
+  leader_criteria:
+    min_volume_ratio: 2.0
+    min_mcdx_score: 70
+    min_price_change_30d: 20  # 30天涨幅>20%
+
+# API优化 (节约资源)
+api_optimization:
+  # 批量获取
+  batch_fetch: true
+  batch_size: 10
+  
+  # 缓存策略
+  cache_enabled: true
+  cache_duration: 300  # 5分钟缓存
+  
+  # 限流
+  rate_limit: 1  # 每秒1个请求
+  retry_attempts: 3
+  retry_delay: 2
+  
+  # 只在交易时间更新
+  trading_hours_only: true
+  trading_hours:
+    start: "09:30"
+    end: "15:00"
+
+# 算力优化
+performance:
+  # 并行处理
+  parallel_processing: true
+  max_workers: 4
+  
+  # 增量更新 (只更新变化的数据)
+  incremental_update: true
+  
+  # 优先级队列
+  priority_queue: true
+  high_priority_signals:
+    - volume_surge
+    - mcdx_extreme
+    - golden_cross
+  
+  # 快速筛选 (先用简单规则过滤)
+  quick_filter:
+    enabled: true
+    min_volume_ratio: 1.5      # 成交量<1.5倍直接跳过
+    min_profit_chips: 60       # 利润筹码<60%跳过
+    min_price: 5               # 股价<5元跳过 (避免垃圾股)
+
+# 告警配置
+alerts:
+  # Shannon模式告警 (最高优先级)
+  shannon_pattern_alert: true
+  
+  # 成交量告警
+  volume_surge_alert: true      # 3倍成交量
+  volume_breakout_alert: true   # 2倍成交量
+  
+  # MCDX告警
+  mcdx_extreme_alert: true      # 利润筹码>85%
+  golden_cross_alert: true      # 金叉
+  
+  # 板块告警
+  sector_leader_alert: true     # 板块龙头
+  
+  # 告警方式
+  alert_methods:
+    console: true
+    file: true
+    # email: false  # 可选
+    # wechat: false # 可选
+
+# 分析设置
+analysis:
+  # 历史数据
+  historical_days: 200
+  min_data_points: 50
+  
+  # 更新频率
+  update_frequency: 60  # 分钟
+  
+  # 实时监控 (交易时间)
+  realtime_monitoring: true
+  realtime_interval: 5  # 5分钟更新一次
+  
+  # 深度分析 (只对高分股票)
+  deep_analysis_threshold: 75
+  deep_analysis_enabled: true
+
+# 输出配置
+output:
+  console: true
+  file: "results/tech_focus_analysis.json"
+  log_level: "INFO"
+  
+  # 简化输出 (节约资源)
+  simplified_output: true
+  only_show_signals: true  # 只显示有信号的股票
+  
+  # 报告
+  daily_report: true
+  daily_report_path: "results/daily_tech_report.txt"
+  
+  # Excel (可选)
+  export_excel: false  # 关闭以节约资源
+  
+  # 重点股票列表
+  watchlist_output: true
+  watchlist_path: "results/watchlist.json"
+
+# 可视化 (可选)
+visualization:
+  enabled: false  # 暂时关闭以节约资源
+  # 需要时再开启
+  # port: 5000
+
+# 排除列表 (不分析的股票)
+exclusions:
+  # 排除传统行业
+  exclude_sectors:
+    - "白酒"      # 茅台等
+    - "银行"      # 传统银行
+    - "保险"      # 保险
+    - "地产"      # 房地产
+    - "煤炭"      # 煤炭
+    - "钢铁"      # 钢铁
+  
+  # 排除低价股
+  min_price: 5.0
+  
+  # 排除低成交量
+  min_avg_volume: 10000000  # 1000万
+  
+  # 排除ST股票
+  exclude_st: true

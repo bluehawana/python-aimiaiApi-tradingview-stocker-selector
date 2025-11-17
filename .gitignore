@@ -1,8 +1,3 @@
-# Environment variables and credentials
-.env
-.env.local
-*.env
-
 # Python
 __pycache__/
 *.py[cod]
@@ -24,12 +19,24 @@ wheels/
 *.egg-info/
 .installed.cfg
 *.egg
-
-# Virtual environments
+.venv/
 venv/
-env/
 ENV/
-.venv
+
+# Data
+data/
+*.csv
+*.xlsx
+*.xls
+
+# Results
+results/
+*.png
+*.jpg
+
+# Environment
+.env
+.env.local
 
 # IDE
 .vscode/
@@ -38,21 +45,13 @@ ENV/
 *.swo
 *~
 
-# Logs
-logs/
-*.log
-
-# Output files
-results/
-output/
-*.json
-*.csv
-
 # OS
 .DS_Store
 Thumbs.db
 
-# Testing
-.pytest_cache/
-.coverage
-htmlcov/
+# Logs
+*.log
+
+# Temporary
+temp/
+tmp/

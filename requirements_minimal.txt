@@ -1,0 +1,16 @@
+# Minimal requirements for Python 3.9
+# Core functionality only
+
+# Data processing
+pandas==1.5.3
+numpy==1.24.4
+
+# HTTP client
+requests==2.31.0
+
+# Configuration
+python-dotenv==1.0.0
+PyYAML==6.0.1
+
+# China stock data
+akshare==1.11.84

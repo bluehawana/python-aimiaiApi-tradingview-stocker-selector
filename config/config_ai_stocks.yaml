@@ -1,0 +1,137 @@
+# AI Stock Analyzer - AI/Semiconductor Sector Configuration
+# Focus on finding the next Shannon (300475) - 6x bull stock
+
+stocks:
+  market: "CN"
+  
+  # AI and Semiconductor stocks (similar to Shannon pattern)
+  # These stocks follow global trends like Micron (MU), NVIDIA, AMD
+  # RAM/Memory demand is universal: servers, datacenters, laptops, PCs
+  symbols:
+    # Reference: Shannon - The 6x Bull Stock
+    - "300475"  # 圣邦股份 Shannon - Analog IC (Reference stock)
+    
+    # AI Chip Leaders
+    - "688256"  # 寒武纪 Cambricon - AI Chips
+    - "688099"  # 晶晨股份 Amlogic - AI SoC
+    
+    # Memory & Interface (follows MU trend)
+    - "688008"  # 澜起科技 Montage Technology - Memory Interface Chips
+    - "603986"  # 兆易创新 GigaDevice - Memory & MCU
+    
+    # Semiconductor Manufacturing
+    - "688981"  # 中芯国际 SMIC - Semiconductor Foundry
+    - "688396"  # 华润微 CR Micro - Power Semiconductor
+    
+    # Semiconductor Equipment
+    - "002371"  # 北方华创 NAURA - Semiconductor Equipment
+    - "688012"  # 中微公司 AMEC - Etching Equipment
+    
+    # IC Design
+    - "603501"  # 韦尔股份 Will Semiconductor - CIS & Analog
+    - "300782"  # 卓胜微 Maxscend - RF Chips
+    - "688521"  # 芯原股份 VeriSilicon - IP & Design Services
+    
+    # Additional AI/Semiconductor
+    - "688018"  # 乐鑫科技 Espressif - IoT Chips
+    - "688595"  # 芯海科技 Chipsea - Analog & MCU
+    - "300661"  # 圣邦股份 Chipown - Analog IC
+  
+  china_data_source: "akshare"
+
+# MCDX Parameters optimized for finding Golden Cross patterns
+technical_analysis:
+  mcdx_params:
+    length: "Auto"
+    revision: "12"
+    sma_pc_length: 10
+    sma_lc_length: 10
+
+# Pattern Detection Settings
+pattern_detection:
+  # Golden Cross is the key signal (like Shannon on June 13, 2025)
+  golden_cross_priority: true
+  
+  # Accumulation pattern (low PC + high LC)
+  accumulation_threshold:
+    max_profit_chips: 40  # PC < 40%
+    min_locked_chips: 20  # LC > 20%
+  
+  # Bottom Catch signal
+  bottom_catch_enabled: true
+  
+  # Double Dragon signal (strong bullish)
+  double_dragon_enabled: true
+
+# News & Catalyst Monitoring
+news_monitoring:
+  enabled: true
+  keywords:
+    - "AI"
+    - "人工智能"
+    - "芯片"
+    - "半导体"
+    - "内存"
+    - "RAM"
+    - "服务器"
+    - "数据中心"
+    - "Micron"
+    - "MU"
+    - "NVIDIA"
+    - "AMD"
+  
+  # Compare with US semiconductor stocks
+  us_comparison:
+    - "MU"    # Micron - Memory leader
+    - "NVDA"  # NVIDIA - AI GPU leader
+    - "AMD"   # AMD - CPU/GPU
+    - "INTC"  # Intel
+    - "TSM"   # TSMC
+
+# Alert Settings
+alerts:
+  # Alert when Golden Cross detected
+  golden_cross_alert: true
+  
+  # Alert when accumulation pattern detected
+  accumulation_alert: true
+  
+  # Alert when similarity score > threshold
+  similarity_threshold: 70  # Score out of 100
+
+# Analysis Settings
+analysis:
+  # Historical days to analyze
+  historical_days: 200
+  
+  # Minimum data points for reliable MCDX
+  min_data_points: 50
+  
+  # Update frequency (minutes)
+  update_frequency: 60
+
+# Output Settings
+output:
+  console: true
+  file: "results/ai_stocks_analysis.json"
+  log_level: "INFO"
+  
+  # Generate comparison charts
+  generate_charts: true
+  chart_output: "results/charts/"
+  
+  # Export to Excel for detailed analysis
+  export_excel: true
+  excel_output: "results/ai_stocks_report.xlsx"
+
+# Visualization
+visualization:
+  enabled: true
+  port: 5000
+  auto_refresh: 60
+  
+  # Highlight stocks with Golden Cross
+  highlight_golden_cross: true
+  
+  # Show similarity score to Shannon
+  show_similarity_score: true
