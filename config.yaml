@@ -1,0 +1,90 @@
+# AI Stock Analyzer Configuration
+
+stocks:
+  # Market selection: "US" or "CN" (China)
+  market: "CN"
+  
+  # List of stock symbols to analyze
+  # For US stocks: AAPL, GOOGL, MSFT, etc.
+  # For China A-shares: 6-digit codes (600000, 000001, etc.)
+  symbols:
+    # China A-shares (Shanghai & Shenzhen)
+    - "600036"  # 招商银行 China Merchants Bank
+    - "600519"  # 贵州茅台 Kweichow Moutai
+    - "601318"  # 中国平安 Ping An Insurance
+    - "000001"  # 平安银行 Ping An Bank
+    - "000333"  # 美的集团 Midea Group
+    - "002594"  # 比亚迪 BYD
+    - "300750"  # 宁德时代 CATL
+    - "300059"  # 东方财富 East Money
+  
+  # Data source for China stocks: "akshare", "tushare", or "ths"
+  china_data_source: "akshare"
+
+technical_analysis:
+  # RSI (Relative Strength Index) period
+  rsi_period: 14
+  
+  # Simple Moving Average periods
+  sma_periods:
+    - 20
+    - 50
+    - 200
+  
+  # Exponential Moving Average periods
+  ema_periods:
+    - 12
+    - 26
+  
+  # MACD parameters
+  macd_params:
+    fast: 12
+    slow: 26
+    signal: 9
+  
+  # MCDX parameters
+  mcdx_params:
+    length: "Auto"  # Options: Auto, 34-bar, 50-bar, 100-bar, Manual
+    manual_length: 100
+    revision: "12"  # Options: 12, 11
+    sma_pc_length: 10
+    sma_fc_length: 10
+    sma_lc_length: 10
+
+api:
+  # aimiai.com API endpoints
+  token_url: "https://aimiai.com/api/token/get"
+  analysis_url: "https://aimiai.com/api/analysis"
+  
+  # Retry configuration
+  retry_attempts: 3
+  retry_delay: 2  # seconds
+  
+  # Rate limiting (requests per second)
+  rate_limit: 1
+
+visualization:
+  # Enable web dashboard
+  enabled: true
+  
+  # Web server port
+  port: 5000
+  
+  # Auto-refresh interval (seconds)
+  auto_refresh: 60
+  
+  # Host address (0.0.0.0 for external access, 127.0.0.1 for local only)
+  host: "127.0.0.1"
+
+output:
+  # Enable console output
+  console: true
+  
+  # Output file path
+  file: "results/stock_analysis.json"
+  
+  # Logging level: DEBUG, INFO, WARNING, ERROR
+  log_level: "INFO"
+  
+  # Log directory
+  log_dir: "logs"

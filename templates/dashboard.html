@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI Stock Analyzer - MCDX Dashboard</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background: #f5f5f5;
+      }
+      .header {
+        background: #2c3e50;
+        color: white;
+        padding: 20px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+      .header h1 {
+        font-size: 24px;
+      }
+      .header .subtitle {
+        font-size: 14px;
+        color: #ecf0f1;
+        margin-top: 5px;
+      }
+      .container {
+        max-width: 1400px;
+        margin: 20px auto;
+        padding: 0 20px;
+      }
+      .controls {
+        background: white;
+        padding: 15px;
+        border-radius: 8px;
+        margin-bottom: 20px;
+        display: flex;
+        gap: 15px;
+        align-items: center;
+      }
+      .btn {
+        padding: 8px 16px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 14px;
+      }
+      .btn-primary {
+        background: #3498db;
+        color: white;
+      }
+      .btn-success {
+        background: #27ae60;
+        color: white;
+      }
+      .btn-danger {
+        background: #e74c3c;
+        color: white;
+      }
+      .btn-warning {
+        background: #f39c12;
+        color: white;
+      }
+      .stock-table {
+        background: white;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+      th {
+        background: #34495e;
+        color: white;
+        padding: 15px;
+        text-align: left;
+        font-weight: 600;
+      }
+      td {
+        padding: 15px;
+        border-bottom: 1px solid #ecf0f1;
+      }
+      tr:hover {
+        background: #f8f9fa;
+      }
+      .badge {
+        padding: 4px 12px;
+        border-radius: 12px;
+        font-size: 12px;
+        font-weight: 600;
+      }
+      .badge-buy {
+        background: #d4edda;
+        color: #155724;
+      }
+      .badge-sell {
+        background: #f8d7da;
+        color: #721c24;
+      }
+      .badge-hold {
+        background: #fff3cd;
+        color: #856404;
+      }
+      .behavior {
+        font-weight: 600;
+      }
+      .behavior-accumulation {
+        color: #27ae60;
+      }
+      .behavior-distribution {
+        color: #e74c3c;
+      }
+      .behavior-stronghold {
+        color: #3498db;
+      }
+      .behavior-breakout {
+        color: #f39c12;
+      }
+      .behavior-neutral {
+        color: #95a5a6;
+      }
+      .score {
+        font-weight: 600;
+        font-size: 18px;
+      }
+      .loading {
+        text-align: center;
+        padding: 40px;
+        color: #7f8c8d;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <h1>🎯 AI Stock Analyzer - MCDX Dashboard</h1>
+      <div class="subtitle">
+        Market Chip Distribution Analysis with AI Insights
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="controls">
+        <button class="btn btn-primary" onclick="refreshData()">
+          🔄 Refresh
+        </button>
+        <button class="btn btn-success" onclick="filterBy('BUY')">
+          🟢 Show BUY Only
+        </button>
+        <button class="btn btn-danger" onclick="filterBy('SELL')">
+          🔴 Show SELL Only
+        </button>
+        <button class="btn btn-warning" onclick="filterBy('HOLD')">
+          🟡 Show HOLD Only
+        </button>
+        <button class="btn" onclick="filterBy('ALL')">Show All</button>
+        <span style="margin-left: auto; color: #7f8c8d"
+          >Last Updated: <span id="lastUpdate">--</span></span
+        >
+      </div>
+
+      <div class="stock-table">
+        <table>
+          <thead>
+            <tr>
+              <th>Symbol</th>
+              <th>Price</th>
+              <th>MCDX Behavior</th>
+              <th>Profit Chips</th>
+              <th>Locked Chips</th>
+              <th>Signals</th>
+              <th>Recommendation</th>
+              <th>Score</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody id="stockTableBody">
+            <tr>
+              <td colspan="9" class="loading">Loading stock data...</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <script>
+      let currentFilter = "ALL";
+
+      function refreshData() {
+        fetch("/api/stocks")
+          .then((response) => response.json())
+          .then((data) => {
+            updateTable(data);
+            document.getElementById("lastUpdate").textContent =
+              new Date().toLocaleTimeString();
+          })
+          .catch((error) => {
+            console.error("Error fetching data:", error);
+          });
+      }
+
+      function updateTable(stocks) {
+        const tbody = document.getElementById("stockTableBody");
+        tbody.innerHTML = "";
+
+        stocks.forEach((stock) => {
+          if (
+            currentFilter !== "ALL" &&
+            stock.recommendation !== currentFilter
+          ) {
+            return;
+          }
+
+          const row = document.createElement("tr");
+          row.innerHTML = `
+                    <td><strong>${stock.symbol}</strong></td>
+                    <td>$${stock.price.toFixed(2)}</td>
+                    <td class="behavior behavior-${stock.behavior
+                      .toLowerCase()
+                      .replace(" ", "")}">${getBehaviorIcon(stock.behavior)} ${
+            stock.behavior
+          }</td>
+                    <td>${stock.profit_chips.toFixed(1)}%</td>
+                    <td>${stock.locked_chips.toFixed(1)}%</td>
+                    <td>${getSignals(stock)}</td>
+                    <td><span class="badge badge-${stock.recommendation.toLowerCase()}">${
+            stock.recommendation
+          }</span></td>
+                    <td class="score">${stock.score.toFixed(1)}</td>
+                    <td><button class="btn btn-primary" onclick="viewDetails('${
+                      stock.symbol
+                    }')">View Chart</button></td>
+                `;
+          tbody.appendChild(row);
+        });
+      }
+
+      function getBehaviorIcon(behavior) {
+        const icons = {
+          Accumulation: "🟢",
+          Distribution: "🔴",
+          "Strong Hold": "🔵",
+          "Breakout Ready": "🟡",
+          Neutral: "⚪",
+        };
+        return icons[behavior] || "⚪";
+      }
+
+      function getSignals(stock) {
+        const signals = [];
+        if (stock.golden_cross) signals.push("GC");
+        if (stock.death_cross) signals.push("DC");
+        if (stock.bottom_catch) signals.push("BC");
+        if (stock.oversold) signals.push("OS");
+        if (stock.overbought) signals.push("OB");
+        return signals.join(", ") || "-";
+      }
+
+      function filterBy(type) {
+        currentFilter = type;
+        refreshData();
+      }
+
+      function viewDetails(symbol) {
+        window.location.href = `/stock/${symbol}`;
+      }
+
+      // Auto-refresh every 60 seconds
+      setInterval(refreshData, 60000);
+
+      // Initial load
+      refreshData();
+    </script>
+  </body>
+</html>
