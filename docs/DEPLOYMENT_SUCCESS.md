@@ -117,8 +117,8 @@ shannon-stock-analyzer/
 
 ```bash
 # 克隆项目
-git clone https://github.com/bluehawana/python-aimiaiApi-tradingview-stocker-selector.git
-cd shannon-stock-analyzer
+git clone https://github.com/bluehawana/Python-TushareApi-TV-StockSelector.git
+cd Python-TushareApi-TV-StockSelector
 
 # 安装依赖
 pip install -r requirements.txt
@@ -186,7 +186,7 @@ MIT 许可证，欢迎贡献
 
 ### GitHub 仓库
 
-- 📍 URL: https://github.com/bluehawana/python-aimiaiApi-tradingview-stocker-selector
+- 📍 URL: https://github.com/bluehawana/Python-TushareApi-TV-StockSelector
 - ⭐ 请给我们一个 Star！
 - 🔄 欢迎 Fork 和 PR
 
@@ -230,7 +230,7 @@ MIT 许可证，欢迎贡献
 ## 📞 联系方式
 
 - GitHub: https://github.com/bluehawana
-- Issues: https://github.com/bluehawana/python-aimiaiApi-tradingview-stocker-selector/issues
+- Issues: https://github.com/bluehawana/Python-TushareApi-TV-StockSelector/issues
 
 ---
 

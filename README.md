@@ -122,8 +122,8 @@ Our system successfully identified Rongbai Technology with an 88-point score (Su
 
 ```bash
 # 1. Clone the repository
-git clone https://github.com/yourusername/shannon-stock-analyzer.git
-cd shannon-stock-analyzer
+git clone https://github.com/bluehawana/Python-TushareApi-TV-StockSelector.git
+cd Python-TushareApi-TV-StockSelector
 
 # 2. Install dependencies
 pip install -r requirements.txt
@@ -380,8 +380,8 @@ This project is open source under the [MIT License](LICENSE).
 
 ## 📞 Contact
 
-- **Issues**: [GitHub Issues](https://github.com/yourusername/shannon-stock-analyzer/issues)
-- **Discussions**: [GitHub Discussions](https://github.com/yourusername/shannon-stock-analyzer/discussions)
+- **Issues**: [GitHub Issues](https://github.com/bluehawana/Python-TushareApi-TV-StockSelector/issues)
+- **Discussions**: [GitHub Discussions](https://github.com/bluehawana/Python-TushareApi-TV-StockSelector/discussions)
 
 ## 🌟 Star History
 
