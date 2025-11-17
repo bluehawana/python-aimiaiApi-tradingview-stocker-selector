@@ -4,136 +4,136 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 
-> **寻找下一个 Shannon** - 一个专业的 A 股技术分析系统，结合 MCDX 筹码分布、Ichimoku Cloud 云层突破和成交量分析，自动扫描全市场 5000+只股票。
+> **Find the Next Shannon** - A professional Chinese A-share technical analysis system combining MCDX chip distribution, Ichimoku Cloud breakout detection, and volume analysis to automatically scan 5000+ stocks.
 
-## 💡 灵感来源
+## 💡 The Inspiration
 
-### Shannon 的故事
+### The Shannon Story
 
-2024 年 9 月 11-12 日，一只名为 Shannon（002870）的股票在两天内暴涨超过 20%。这不是偶然，而是多个技术指标完美共振的结果：
+In 2024, a stock named Shannon (300475) achieved something extraordinary: **it surged from ¥30 to ¥180 in just 3 months** - a remarkable **6x gain (500% return)**. This wasn't luck. It was the perfect convergence of multiple technical indicators:
 
-- **MCDX 金叉**: Profit Chips 达到 100%，SMA PC 86.65%
-- **成交量暴增**: 从 30M 激增到 89M，3.0 倍放量
-- **价格突破**: 连续两天强势上涨
-- **筹码锁定**: Locked Chips < 15%，筹码高度集中
+- **MCDX Golden Cross**: Profit Chips reached 100%, SMA PC at 86.65%
+- **Volume Explosion**: Trading volume surged 3.0x from normal levels
+- **Price Breakout**: Strong consecutive daily gains
+- **Chip Lock**: Locked Chips < 15%, indicating high concentration
 
-这个案例让我意识到：**如果能提前识别这种模式，就能抓住下一个 Shannon！**
+This case made me realize: **If we could identify this pattern early, we could catch the next Shannon!**
 
-### 从灵感到实现
+### From Inspiration to Implementation
 
-我开始思考：如何系统化地寻找这种机会？
+I started thinking: How can we systematically find these opportunities?
 
-1. **MCDX 分析** - 筹码分布是关键，但单一指标不够
-2. **Ichimoku Cloud** - 需要确认趋势和突破信号
-3. **成交量** - 必须有资金推动
-4. **自动化** - 人工筛选 5000 只股票不现实
+1. **MCDX Analysis** - Chip distribution is key, but one indicator isn't enough
+2. **Ichimoku Cloud** - Need to confirm trend and breakout signals
+3. **Volume** - Must have capital flow to drive the move
+4. **Automation** - Manually screening 5000 stocks is impractical
 
-于是，Shannon Stock Analyzer 诞生了。
+Thus, Shannon Stock Analyzer was born.
 
-## 🎯 核心理念
+## 🎯 Core Philosophy
 
-### 三重技术分析框架
+### Triple Technical Analysis Framework
 
-我们不依赖单一指标，而是构建了一个**三重验证系统**：
-
-```
-Shannon模式 = MCDX金叉 + Ichimoku突破 + 成交量暴增
-```
-
-#### 1️⃣ MCDX (Market Chip Distribution X) - 40 分
-
-**筹码分布分析**，揭示主力行为：
-
-- Profit Chips >= 80% - 大部分筹码获利
-- SMA PC >= 85% - 趋势确认
-- Locked Chips < 15% - 筹码活跃
-
-#### 2️⃣ Ichimoku Cloud - 30 分
-
-**一目均衡表**，日本最强技术指标：
-
-- 价格突破云层 - 趋势反转
-- 云层转为看涨（绿色）- 支撑确认
-- Tenkan > Kijun - 短期强于长期
-
-> 💡 **关键信号**: 当价格突破云层且云层转为看涨时，通常会有陡峭上涨！
-
-#### 3️⃣ 成交量分析 - 20 分
-
-**资金推动**，验证真实性：
-
-- 成交量比率 >= 2.5x - 资金大量涌入
-- 持续 2 天以上 - 不是昙花一现
-
-#### 4️⃣ 价格确认 - 10 分
-
-**涨幅验证**：
-
-- 5 日涨幅 >= 5%
-- 10 日涨幅 >= 10%
-
-### 评分系统
-
-| 评分   | 评级            | 说明                            |
-| ------ | --------------- | ------------------------------- |
-| 80-100 | 🔥🔥🔥 超级信号 | 极度接近 Shannon 模式，强烈推荐 |
-| 60-79  | 🔥🔥 强烈推荐   | 具有明显特征，值得重点关注      |
-| 40-59  | 🔥 值得关注     | 有潜力，需要继续观察            |
-
-## 🎉 成功案例
-
-### 容百科技 (688005) - 88 分 🏆
-
-我们的系统成功识别出容百科技，评分 88 分（超级信号）：
+We don't rely on a single indicator. Instead, we built a **triple verification system**:
 
 ```
-✅ Ichimoku强势: 价格突破云层，云层转为看涨
-✅ MCDX金叉: PC 95.3%, SMA PC 59.5%
-✅ 成交量达标: 2.50x
-✅ 价格涨幅: +19.8% (5日)
+Shannon Pattern = MCDX Golden Cross + Ichimoku Breakout + Volume Surge
 ```
 
-**这正是我们要找的 Shannon 模式！**
+#### 1️⃣ MCDX (Market Chip Distribution X) - 40 Points
 
-### 其他强烈推荐
+**Chip distribution analysis** revealing institutional behavior:
 
-1. **恩捷股份 (002812)** - 78 分
+- Profit Chips >= 80% - Most chips are profitable
+- SMA PC >= 85% - Trend confirmation
+- Locked Chips < 15% - Active chip movement
 
-   - Ichimoku 强势 ✅
+#### 2️⃣ Ichimoku Cloud - 30 Points
+
+**Ichimoku Kinko Hyo**, Japan's most powerful technical indicator:
+
+- Price breaks above cloud - Trend reversal
+- Cloud turns bullish (green) - Support confirmed
+- Tenkan > Kijun - Short-term stronger than long-term
+
+> 💡 **Key Signal**: When price breaks above the cloud AND the cloud turns bullish, steep rallies typically follow!
+
+#### 3️⃣ Volume Analysis - 20 Points
+
+**Capital flow** validation:
+
+- Volume ratio >= 2.5x - Massive capital inflow
+- Sustained 2+ days - Not a flash in the pan
+
+#### 4️⃣ Price Confirmation - 10 Points
+
+**Gain verification**:
+
+- 5-day gain >= 5%
+- 10-day gain >= 10%
+
+### Scoring System
+
+| Score  | Rating                     | Description                                            |
+| ------ | -------------------------- | ------------------------------------------------------ |
+| 80-100 | 🔥🔥🔥 Super Signal        | Extremely close to Shannon pattern, highly recommended |
+| 60-79  | 🔥🔥 Strong Recommendation | Clear characteristics, worth close attention           |
+| 40-59  | 🔥 Worth Watching          | Potential, needs continued observation                 |
+
+## 🎉 Success Stories
+
+### Rongbai Technology (688005) - 88 Points 🏆
+
+Our system successfully identified Rongbai Technology with an 88-point score (Super Signal):
+
+```
+✅ Ichimoku Strong Bullish: Price broke above cloud, cloud turned bullish
+✅ MCDX Golden Cross: PC 95.3%, SMA PC 59.5%
+✅ Volume Surge: 2.50x
+✅ Price Gain: +19.8% (5-day)
+```
+
+**This is exactly the Shannon pattern we're looking for!**
+
+### Other Strong Recommendations
+
+1. **Enjie Technology (002812)** - 78 Points
+
+   - Ichimoku strong bullish ✅
    - PC 89.9%, SMA PC 88.1% ✅
-   - 等待成交量放大
+   - Waiting for volume surge
 
-2. **天齐锂业 (002466)** - 76 分
+2. **Tianqi Lithium (002466)** - 76 Points
 
-   - Ichimoku 强势 ✅
+   - Ichimoku strong bullish ✅
    - PC 95.1% ✅
-   - 等待成交量放大
+   - Waiting for volume surge
 
-3. **赣锋锂业 (002460)** - 70 分
-   - Ichimoku 强势 ✅
-   - MCDX 优秀 ✅
-   - 等待成交量放大
+3. **Ganfeng Lithium (002460)** - 70 Points
+   - Ichimoku strong bullish ✅
+   - MCDX excellent ✅
+   - Waiting for volume surge
 
-**发现**: 前 4 名都是锂电池板块，说明板块共振！
+**Discovery**: Top 4 are all lithium battery sector stocks, indicating sector momentum!
 
-## 🚀 快速开始
+## 🚀 Quick Start
 
-### 安装
+### Installation
 
 ```bash
-# 1. 克隆项目
+# 1. Clone the repository
 git clone https://github.com/yourusername/shannon-stock-analyzer.git
 cd shannon-stock-analyzer
 
-# 2. 安装依赖
+# 2. Install dependencies
 pip install -r requirements.txt
 
-# 3. 配置Token
+# 3. Configure Token
 cp .env.example .env
-# 编辑 .env，添加你的 Tushare Token
+# Edit .env and add your Tushare Token
 ```
 
-### 一键运行
+### One-Click Execution
 
 ```bash
 # Windows
@@ -143,258 +143,258 @@ run_scan.bat
 python scripts/find_all_shannon.py
 ```
 
-就这么简单！系统会自动：
+That's it! The system will automatically:
 
-1. 下载全市场数据（5000+只股票，180 天）
-2. 应用 Shannon 三重分析
-3. 导出结果到 `results/` 文件夹
+1. Download full market data (5000+ stocks, 180 days)
+2. Apply Shannon triple analysis
+3. Export results to `results/` folder
 
-## 📊 使用示例
+## 📊 Usage Examples
 
-### 全市场扫描
+### Full Market Scan
 
 ```python
 from scripts.find_all_shannon import AllMarketShannonFinder
 
-# 创建扫描器
+# Create scanner
 finder = AllMarketShannonFinder("data/tushare")
 
-# 扫描全市场
+# Scan full market
 results = finder.scan_all_stocks()
 
-# 查看超级信号
+# View super signals
 super_signals = results[results['total_score'] >= 80]
 print(super_signals)
 ```
 
-### 单只股票分析
+### Single Stock Analysis
 
 ```python
 from src.mcdx.calculator import MCDXCalculator
 from src.indicators.ichimoku import IchimokuCalculator
 import pandas as pd
 
-# 加载数据
+# Load data
 df = pd.read_csv('data/tushare/688005.csv')
 df['date'] = pd.to_datetime(df['date'])
 df = df.sort_values('date')
 
-# MCDX分析
+# MCDX analysis
 mcdx = MCDXCalculator()
 mcdx_result = mcdx.calculate(df, '688005')
 print(f"PC: {mcdx_result.profit_chips:.1f}%")
 
-# Ichimoku分析
+# Ichimoku analysis
 ichimoku = IchimokuCalculator()
 ichimoku_result = ichimoku.calculate(df)
-print(f"强烈看涨: {ichimoku_result.strong_bullish}")
+print(f"Strong Bullish: {ichimoku_result.strong_bullish}")
 ```
 
-更多示例请查看 [examples/basic_usage.py](examples/basic_usage.py)
+More examples in [examples/basic_usage.py](examples/basic_usage.py)
 
-## 🏗️ 项目架构
+## 🏗️ Project Architecture
 
 ```
 shannon-stock-analyzer/
-├── src/                    # 核心代码
-│   ├── mcdx/              # MCDX计算器
-│   │   ├── calculator.py  # 筹码分布分析
+├── src/                    # Core code
+│   ├── mcdx/              # MCDX calculator
+│   │   ├── calculator.py  # Chip distribution analysis
 │   │   └── volume_analyzer.py
-│   ├── indicators/        # 技术指标
-│   │   └── ichimoku.py    # 一目均衡表
-│   └── data/              # 数据加载器
+│   ├── indicators/        # Technical indicators
+│   │   └── ichimoku.py    # Ichimoku Kinko Hyo
+│   └── data/              # Data loaders
 │
-├── scripts/               # 分析脚本
-│   ├── find_all_shannon.py          # 全市场扫描 ⭐
-│   ├── find_shannon_with_ichimoku.py # 24只股票分析
-│   └── download/                    # 数据下载
+├── scripts/               # Analysis scripts
+│   ├── find_all_shannon.py          # Full market scan ⭐
+│   ├── find_shannon_with_ichimoku.py # 24-stock analysis
+│   └── download/                    # Data download
 │
-├── batch/                 # Windows批处理
-├── tools/                 # 工具脚本
-├── docs/                  # 文档
-└── examples/              # 示例代码
+├── batch/                 # Windows batch files
+├── tools/                 # Utility scripts
+├── docs/                  # Documentation
+└── examples/              # Example code
 ```
 
-## 🔧 技术实现
+## 🔧 Technical Implementation
 
-### MCDX 计算器
+### MCDX Calculator
 
-基于 Pine Script 的 MCDX 指标，完整移植到 Python：
+Complete Python port of the Pine Script MCDX indicator:
 
 ```python
 class MCDXCalculator:
     """
     MCDX (Market Chip Distribution X) Calculator
-    计算筹码分布，识别主力行为
+    Calculates chip distribution to identify institutional behavior
     """
 
     def calculate(self, df: pd.DataFrame, symbol: str) -> MCDXResult:
-        # 计算Profit Chips, Float Chips, Locked Chips
-        # 识别金叉、死叉、双龙出海等形态
-        # 给出行为分析和交易建议
+        # Calculate Profit Chips, Float Chips, Locked Chips
+        # Identify golden cross, death cross, double dragon patterns
+        # Provide behavior analysis and trading recommendations
 ```
 
 ### Ichimoku Cloud
 
-完整实现一目均衡表的 5 条线和云层：
+Full implementation of Ichimoku Kinko Hyo's 5 lines and cloud:
 
 ```python
 class IchimokuCalculator:
     """
     Ichimoku Cloud Calculator
-    一目均衡表 - 日本最强技术指标
+    Ichimoku Kinko Hyo - Japan's most powerful technical indicator
     """
 
     def calculate(self, df: pd.DataFrame) -> IchimokuResult:
-        # Tenkan-sen (转换线)
-        # Kijun-sen (基准线)
-        # Senkou Span A & B (先行带，形成云层)
-        # Chikou Span (迟行带)
+        # Tenkan-sen (Conversion Line)
+        # Kijun-sen (Base Line)
+        # Senkou Span A & B (Leading Spans, forming the cloud)
+        # Chikou Span (Lagging Span)
 
-        # 识别云层突破和强烈看涨信号
+        # Identify cloud breakouts and strong bullish signals
 ```
 
-### 智能评分
+### Intelligent Scoring
 
-综合三个维度，自动计算 Shannon 评分：
+Comprehensive scoring across three dimensions:
 
 ```python
 def calculate_shannon_score(mcdx, ichimoku, volume, price):
     score = 0
 
-    # MCDX (40分)
+    # MCDX (40 points)
     if mcdx.profit_chips >= 90: score += 20
     if mcdx.sma_profit_chips >= 85: score += 15
     if mcdx.locked_chips < 10: score += 5
 
-    # Ichimoku (30分)
+    # Ichimoku (30 points)
     score += ichimoku.ichimoku_score * 0.3
 
-    # 成交量 (20分)
+    # Volume (20 points)
     if volume_ratio >= 3.0: score += 20
     elif volume_ratio >= 2.5: score += 15
 
-    # 价格 (10分)
+    # Price (10 points)
     if gain_5d >= 10: score += 10
 
-    # 特殊加分 (15分)
+    # Special bonus (15 points)
     if ichimoku.strong_bullish and mcdx.pc >= 80 and volume >= 2.0:
         score += 15
 
     return score
 ```
 
-## 📈 数据来源
+## 📈 Data Sources
 
-- **Tushare** - 中国 A 股数据（需要 Token）
-- **支持市场**: 上海证券交易所 + 深圳证券交易所
-- **数据范围**: 主板、创业板、科创板
-- **历史数据**: 180 天（可配置）
+- **Tushare** - Chinese A-share data (Token required)
+- **Supported Markets**: Shanghai Stock Exchange + Shenzhen Stock Exchange
+- **Coverage**: Main Board, ChiNext, STAR Market
+- **Historical Data**: 180 days (configurable)
 
-## 🎯 使用场景
+## 🎯 Use Cases
 
-### 1. 日常监控
+### 1. Daily Monitoring
 
-每日运行扫描，寻找新的 Shannon 候选
+Run daily scans to find new Shannon candidates
 
-### 2. 板块分析
+### 2. Sector Analysis
 
-系统自动统计行业分布，发现热点板块
+System automatically tracks industry distribution to discover hot sectors
 
-### 3. 定时任务
+### 3. Scheduled Tasks
 
-设置 22:00 自动运行（避开 API 限制）：
+Set to run at 22:00 (avoiding API limits):
 
 ```bash
 python tools/schedule_scan.py --time 22:00
 ```
 
-### 4. 量化策略
+### 4. Quantitative Strategy
 
-作为量化交易策略的信号源
+Use as a signal source for quantitative trading strategies
 
-## 📚 文档
+## 📚 Documentation
 
-- [快速开始](QUICKSTART.md) - 5 分钟上手
-- [完整指南](docs/ULTIMATE_SCAN_GUIDE.md) - 详细使用说明
-- [Shannon 标准](docs/SHANNON_CRITERIA.md) - 评分标准详解
-- [Ichimoku 分析](docs/ICHIMOKU_RESULTS.md) - 云层突破解析
-- [贡献指南](CONTRIBUTING.md) - 如何参与开发
+- [Quick Start](QUICKSTART.md) - Get started in 5 minutes
+- [Complete Guide](docs/ULTIMATE_SCAN_GUIDE.md) - Detailed usage
+- [Shannon Criteria](docs/SHANNON_CRITERIA.md) - Scoring system explained
+- [Ichimoku Analysis](docs/ICHIMOKU_RESULTS.md) - Cloud breakout analysis
+- [Contributing Guide](CONTRIBUTING.md) - How to contribute
 
-## 🤝 贡献
+## 🤝 Contributing
 
-这个项目是开源的，欢迎所有人贡献！
+This project is open source and welcomes contributions from everyone!
 
-### 如何贡献
+### How to Contribute
 
-1. Fork 本项目
-2. 创建特性分支 (`git checkout -b feature/AmazingFeature`)
-3. 提交更改 (`git commit -m 'Add some AmazingFeature'`)
-4. 推送到分支 (`git push origin feature/AmazingFeature`)
-5. 创建 Pull Request
+1. Fork the project
+2. Create a feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Create a Pull Request
 
-### 贡献方向
+### Contribution Ideas
 
-- 🔧 添加新的技术指标
-- 📊 改进评分算法
-- 🌐 支持更多数据源
-- 📱 开发 Web 界面
-- 📖 完善文档
-- 🐛 修复 Bug
+- 🔧 Add new technical indicators
+- 📊 Improve scoring algorithms
+- 🌐 Support more data sources
+- 📱 Develop web interface
+- 📖 Enhance documentation
+- 🐛 Fix bugs
 
-## 🙏 致谢
+## 🙏 Acknowledgments
 
-### 灵感来源
+### Inspiration
 
-- **Shannon (002870)** - 启发了整个项目
-- **TradingView** - MCDX 指标的原始实现
-- **Ichimoku Kinko Hyo** - 日本技术分析大师的智慧
+- **Shannon (300475)** - The stock that inspired this entire project (¥30 → ¥180 in 3 months)
+- **TradingView** - Original MCDX indicator implementation
+- **Ichimoku Kinko Hyo** - Wisdom from Japanese technical analysis masters
 
-### 技术栈
+### Technology Stack
 
-- **Python** - 强大的数据分析能力
-- **pandas** - 数据处理
-- **Tushare** - 数据源
-- **NumPy** - 数值计算
+- **Python** - Powerful data analysis capabilities
+- **pandas** - Data processing
+- **Tushare** - Data source
+- **NumPy** - Numerical computing
 
-### 社区
+### Community
 
-感谢所有使用和反馈的用户！
+Thanks to all users who use and provide feedback!
 
-## ⚠️ 免责声明
+## ⚠️ Disclaimer
 
-**重要提示**：
+**Important Notice**:
 
-1. 本工具仅供**学习和研究**使用
-2. 不构成任何**投资建议**
-3. 历史模式不代表未来表现
-4. 股市有风险，投资需谨慎
-5. 请结合基本面分析和市场环境
-6. 建议设置止损位，控制风险
+1. This tool is for **educational and research purposes only**
+2. Does not constitute any **investment advice**
+3. Historical patterns do not guarantee future performance
+4. Stock market involves risks, invest cautiously
+5. Please combine with fundamental analysis and market conditions
+6. Recommend setting stop-loss levels and controlling risk
 
-**使用本工具进行投资决策的风险由用户自行承担。**
+**Users assume all risks from investment decisions made using this tool.**
 
-## 📄 许可证
+## 📄 License
 
-本项目采用 [MIT License](LICENSE) 开源。
+This project is open source under the [MIT License](LICENSE).
 
-## 📞 联系方式
+## 📞 Contact
 
 - **Issues**: [GitHub Issues](https://github.com/yourusername/shannon-stock-analyzer/issues)
 - **Discussions**: [GitHub Discussions](https://github.com/yourusername/shannon-stock-analyzer/discussions)
 
 ## 🌟 Star History
 
-如果这个项目对你有帮助，请给我们一个 ⭐️！
+If this project helps you, please give us a ⭐️!
 
 ---
 
 <div align="center">
 
-**🚀 寻找下一个 Shannon！**
+**🚀 Find the Next Shannon!**
 
 Made with ❤️ by the Shannon Stock Analyzer Team
 
-[快速开始](QUICKSTART.md) · [文档](docs/) · [示例](examples/) · [贡献](CONTRIBUTING.md)
+[Quick Start](QUICKSTART.md) · [Documentation](docs/) · [Examples](examples/) · [Contributing](CONTRIBUTING.md)
 
 </div>
